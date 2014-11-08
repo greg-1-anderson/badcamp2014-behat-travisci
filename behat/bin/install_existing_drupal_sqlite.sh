@@ -1,7 +1,8 @@
 #!/bin/bash
 
 SELF_DIRNAME="`dirname -- "$0"`"
-PARENT_PATH="`cd -P -- "$SELF_DIRNAME/.." && pwd -P`/`basename -- "$0"`"
+PARENT_PATH="`cd -P -- "$SELF_DIRNAME/.." && pwd -P`"
+DRUPAL_ROOT="`cd -P -- "$PARENT_PATH/../drupal" && pwd -P`"
 
 #
 #
@@ -12,5 +13,4 @@ PARENT_PATH="`cd -P -- "$SELF_DIRNAME/.." && pwd -P`/`basename -- "$0"`"
 # If you want to run on mysql, or set up for non-local use,
 # use the install_drupal.sh script instead.
 #
-rm -rf html
-drush -y -v core-quick-drupal --profile=standard --core=drupal-7.x behat_demo devel --browser=0 --no-server --root=$PARENT_PATH/html --account-name=admin --account-pass=admin
+drush -y core-quick-drupal --root="$DRUPAL_ROOT" --use-existing --browser=0 --no-server --account-name=admin --account-pass=admin
