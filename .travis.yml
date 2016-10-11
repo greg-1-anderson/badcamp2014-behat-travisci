@@ -2,6 +2,12 @@ language: php
 php:
   - 5.4
 
+branches:
+  # Only test the master branch and SemVer tags.
+  only:
+    - master
+    - /^v*[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+.*$/
+
 mysql:
   database: drupal
   username: root
